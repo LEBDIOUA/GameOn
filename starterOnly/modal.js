@@ -83,9 +83,27 @@ function validation(element){
       msg[0] = true;
       msg[1] = "Vous devez fournir une valeur";
     }
-    else if (element.name == "last" && element.value.length<2){
-      msg[0] = true;
-      msg[1] = "la valeur que vous avez fournie est érronée";
+    else if (element.name == "first" || element.name == "last"){
+      if(element.value.length<2){
+        msg[0] = true;
+        msg[1] = "la valeur que vous avez fournie est érronée";
+      }
+    }
+    else if(element.type == "email"){
+      //Ce n'est pas nécessaire
+      if(!verifierEmail(element.value)){
+        msg[0] = true;
+        msg[1] = "la valeur que vous avez fournie est érronée";
+      }
+    }
+    else if(element.type == "date"){
+      //Ce n'est pas demandé, avoir au moin 15ans
+      const date = new Date();
+      let dateAnniv = new Date(element.value);
+      if((dateAnniv.getFullYear() + 15) > date.getFullYear()){
+        msg[0] = true;
+        msg[1] = "la valeur que vous avez fournie est érronée";
+      }
     }
   }
   else if(element.type === "radio"){
@@ -137,4 +155,13 @@ function initialiserForm(formInput, element){
     // document.querySelector(".text-label").remove();
     // document.querySelector(".btn-submit").remove();
   }
+}
+function verifierEmail(element){
+  let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if(element.match(emailFormat)){
+    return true;
+  }
+  else{
+    return false;
+  } 
 }
