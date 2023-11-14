@@ -27,6 +27,10 @@ function launchModal() {
   if(!myForm.getAttribute("novalidate")){
     myForm.setAttribute("novalidate", "")
   }
+  const msg = document.querySelector(".msgFinal")
+  if(msg != null){
+    msg.textContent = "Vous êtes déjà inscrit"
+  }
 }
 // Fermer modal form
 function fermerModal() {
