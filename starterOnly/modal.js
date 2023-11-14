@@ -20,6 +20,31 @@ const myForm = document.querySelector("form");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalClose.addEventListener("click", fermerModal);
 
+function gererChangementResponsive() {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    // Si la largeur d'écran est inférieure à 768px
+    if(document.querySelector(".hero-section").style.display != "none"){
+      document.querySelector(".hero-section").style.display = "none";
+      document.querySelector("footer").style.display = "none";
+      document.querySelector("main").style.padding = "0";
+      document.querySelector("main").style.margin = "0";
+      modalbg.style.backgroundColor = "#232323";
+      modalbg.style.position = 'relative';
+      conteneur.style.maxWidth = 'none';
+      conteneur.style.margin = "0";
+    }
+    else{
+      document.querySelector(".hero-section").style.display = "block";
+      document.querySelector("footer").style.display = "block";
+      document.querySelector("main").style.padding = "0.5vw 2vw 0 2vw";
+      document.querySelector("main").style.margin = "1px 20px 15px";
+      modalbg.style.backgroundColor = "rgba(26, 39, 156, 0.4";
+      modalbg.style.position = 'fixed';
+      conteneur.style.maxWidth = '500px';
+      conteneur.style.margin = "5% auto";
+    }
+  }
+}
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -31,13 +56,15 @@ function launchModal() {
   if(msg != null){
     msg.textContent = "Vous êtes déjà inscrit"
   }
+  gererChangementResponsive();
 }
 // Fermer modal form
 function fermerModal() {
   modalbg.style.display = "none";
+  gererChangementResponsive();
 }
 //Confirmation des données
-function confirmDonnees(event){
+function confirmDonnees(){
   let submit = true;
   formData.forEach((formInput) => {
     const inputElement = formInput.querySelector("input");
@@ -189,13 +216,13 @@ function verifierCheck(element){
     }while(i<tournois.length && !tournoisChecked);
     if (tournoisChecked == false){
       msg[0] = true;
-      msg[1] = "Aucun tournois selectioné";
+      msg[1] = "Veuillez choisir une option";
     }
   }
   else if(element.type === "checkbox"){
     if(!element.checked && element.id === "checkbox1"){
       msg[0] = true;
-      msg[1] = "Veuillez accepter les conditions";
+      msg[1] = "Vous devez vérifier que vous acceptez les termes et conditions";
     }
   }
   return msg;
