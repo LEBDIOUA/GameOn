@@ -180,7 +180,7 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px; 
+  padding-top: 10px;
 }
 
 .modal-body {
@@ -526,17 +526,4 @@ footer {
     opacity: 1;
   }
 }
-.msgErreur{
-  color: #FF4E60;
-  font-size: 14px;
-}
-.msgFinal{
-  margin: 40% auto;
-  font-size: 36px;
-  width: 271px;
-  text-align: center;
-  color: white;
-}
-.btn-fermer{
-  margin: 3% auto;
-}
+
