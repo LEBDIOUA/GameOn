@@ -151,27 +151,50 @@ function initialiserForm(container, element){
     supprimerElement(container, element);
   }
 }
-function validation(element){
+/* function validation(element){
   let msg = [false, ""];
-  let listInput = ["text", "date", "email", "number"];
-  if (listInput.includes(element.type)){
-    if (element.name == "first" || element.name == "last"){
-      msg = verifierText(element);
-    }
-    else if(element.name == "quantity"){
-      msg = verifierEntier(element);
-    }
-    else if(element.type == "email"){
-      msg = verifierEmail(element);
-    }
-    else if(element.type == "date"){
-      msg = verifierDate(element);
-    }
+  if (element.name == "first" || element.name == "last"){
+    msg = verifierText(element);
+  }
+  else if(element.name == "quantity"){
+    msg = verifierEntier(element);
+  }
+  else if(element.type == "email"){
+    msg = verifierEmail(element);
+  }
+  else if(element.type == "date"){
+    msg = verifierDate(element);
   }
   else if(element.type === "radio" || element.type === "checkbox"){
     msg = verifierCheck(element);
   }
   return msg;
+} */
+function validation(element){
+  let msg = [false, ""];
+  let fonction = "verifier";
+  fonction += premiereMajuscule(element.type);
+  try {
+    if(typeof window[fonction] === "function") {
+      // Appeler la fonction correspondante avec l'événement en tant qu'argument
+      msg = window[fonction](element);
+    }
+    else{
+      throw new Error("La fonction n'existe pas :" + fonction);
+    }
+  }
+  catch (error){
+    console.error("Erreur lors de l'appel de la fonction :", error);
+  }
+  return msg;
+}
+//Fonction permet à transformer la première lettre du mot en majuscule
+function premiereMajuscule(mot){
+  let temp = mot[0].toUpperCase();
+  for(i=1; i<mot.length; i++){
+    temp += mot[i];
+  }
+  return temp;
 }
 function verifierText(element){
   let msg = [false, ""];
@@ -215,32 +238,32 @@ function verifierEmail(element){
   }
   return msg; 
 }
-function verifierCheck(element){
+function verifierCheckbox(element){
   let msg = [false, ""];
-  if(element.type === "radio"){
-    const tournois = element.form.querySelectorAll('input[type="radio"]');
-    let i=0;
-    let tournoisChecked = false;
-    do{
-      if(tournois[i].checked){
-        tournoisChecked = true;
-      }
-      i++;
-    }while(i<tournois.length && !tournoisChecked);
-    if (tournoisChecked == false){
-      msg[0] = true;
-      msg[1] = "Aucun tournois selectioné, veuillez choisir une option";
-    }
-  }
-  else if(element.type === "checkbox"){
-    if(!element.checked && element.id === "checkbox1"){
-      msg[0] = true;
-      msg[1] = "Vous devez vérifier que vous acceptez les termes et conditions";
-    }
+  if(!element.checked && element.id === "checkbox1"){
+    msg[0] = true;
+    msg[1] = "Vous devez vérifier que vous acceptez les termes et conditions";
   }
   return msg;
 }
-function verifierEntier(element){
+function verifierRadio(element){
+  const tournois = element.form.querySelectorAll('input[type="radio"]');
+  let msg = [false, ""];
+  let i = 0;
+  let tournoisChecked = false;
+  do{
+    if(tournois[i].checked){
+      tournoisChecked = true;
+    }
+    i++;
+  }while(i<tournois.length && !tournoisChecked);
+  if (tournoisChecked == false){
+    msg[0] = true;
+    msg[1] = "Aucun tournois selectioné, veuillez choisir une option";
+  }
+  return msg;
+}
+function verifierNumber(element){
   let msg = [false, ""];
   if (element.value === ""){
     msg[0] = true;
