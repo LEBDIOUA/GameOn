@@ -14,14 +14,23 @@ const formData = document.querySelectorAll(".formData");
 const conteneur = document.querySelector(".content");
 const modalBody = document.querySelector(".modal-body");
 const myForm = document.querySelector("form");
+const mq = window.matchMedia("(max-width: 768px)");
+
+//Initialiser modal pour gérer le changement de responsive
+modalbg.style.display = "none";
+
+//Vérifier l'état de media query toutes les 100 ms
+setInterval(gererChangementResponsive, 100);
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalClose.addEventListener("click", fermerModal);
 
 function gererChangementResponsive() {
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    // Si la largeur d'écran est inférieure à 768px
-    if(document.querySelector(".hero-section").style.display != "none"){
+  if (mq.matches) {
+    //Si la largeur d'écran est inférieure à 768px
+    if(modalbg.style.display !== "none"){
+      //Si le modal est affiché
       document.querySelector(".hero-section").style.display = "none";
       document.querySelector("footer").style.display = "none";
       document.querySelector("main").style.padding = "0";
@@ -32,16 +41,24 @@ function gererChangementResponsive() {
       conteneur.style.margin = "0";
     }
     else{
-      document.querySelector(".hero-section").style.display = "block";
-      document.querySelector("footer").style.display = "block";
-      document.querySelector("main").style.padding = "0.5vw 2vw 0 2vw";
-      document.querySelector("main").style.margin = "1px 20px 15px";
-      modalbg.style.backgroundColor = "rgba(26, 39, 156, 0.4";
-      modalbg.style.position = 'fixed';
-      conteneur.style.maxWidth = '500px';
-      conteneur.style.margin = "5% auto";
+      remettreAZero();
     }
   }
+  else{
+    if(document.querySelector(".hero-section").style.display == "none"){
+      remettreAZero();
+    }
+  }
+}
+function remettreAZero(){
+  document.querySelector(".hero-section").style.display = "block";
+  document.querySelector("footer").style.display = "block";
+  document.querySelector("main").style.padding = "0.5vw 2vw 0 2vw";
+  document.querySelector("main").style.margin = "1px 20px 15px";
+  modalbg.style.backgroundColor = "rgba(26, 39, 156, 0.4";
+  modalbg.style.position = 'fixed';
+  conteneur.style.maxWidth = '500px';
+  conteneur.style.margin = "5% auto";
 }
 // launch modal form
 function launchModal() {
