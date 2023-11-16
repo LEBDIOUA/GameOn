@@ -19,8 +19,6 @@ Enfin, chaque segment du code subit des tests manuels rigoureux avant son intég
 ![AlgorithmeMsgErreur](./assets/algorithmeMsgErreur.png)
 Pour pouvoir afficher mes messages d'erreur personnalisés, j'ai désactiver l'affichage des messages d'erreur natifs du navigateur liés à la validation HTML5 des champs du formulaire en ajoutant l'attribut 
 « novalidate » à la balise Form
-![image](https://github.com/LEBDIOUA/GameOn/assets/141866412/1b898e2a-c902-4c1f-9a39-ee9aad54bf9c)
-
 
 **5. Algorithme d'initialiser le formulaire**<br/>
 ![AlgorithmeInitialiserFormulaire1](./assets/algorithmeInitialiserFormulaire.png)
