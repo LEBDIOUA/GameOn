@@ -8,8 +8,8 @@ Mon rôle consiste à implémenter et compléter le code JavaScript manquant.
 
 **2. Bonnes pratiques de structuration et d'organisation du code**<br/>
 J'ai adopté une méthodologie pour la structuration du code, j'ai opté pour une séparation claire entre le code HTML, le CSS et le JavaScript, chacun dans des fichiers dédiés. Cette approche assure une organisation optimale et facilite la maintenance.<br/>
-De plus, j'ai ajouter des commentaires explicatifs dans le code pour favoriser sa compréhension, encourageant ainsi la collaboration au sein de l'équipe et simplifiant les tâches de maintenance.<br/>
-j'ai privilégé également la modularité en utilisant de petites fonctions à des fins spécifiques, évitant ainsi toute surcharge inutile et garantissant une lisibilité accrue et une réutilisabilité efficace du code.<br/>
+De plus, j'ai ajouté des commentaires explicatifs dans le code pour favoriser sa compréhension, encourageant ainsi la collaboration au sein de l'équipe et simplifiant les tâches de maintenance.<br/>
+j'ai privilégié également la modularité en utilisant de petites fonctions à des fins spécifiques, évitant ainsi toute surcharge inutile et garantissant une lisibilité accrue et une réutilisabilité efficace du code.<br/>
 Enfin, chaque segment du code subit des tests manuels rigoureux avant son intégration, assurant ainsi la qualité et la fiabilité de mon produit final.
 
 **3.Algorithme général:**<br/>
@@ -17,12 +17,16 @@ Enfin, chaque segment du code subit des tests manuels rigoureux avant son intég
 
 **4. Algorithme de message d’erreur personnalisé**<br/>
 ![AlgorithmeMsgErreur](./assets/algorithmeMsgErreur.png)
+Pour pouvoir afficher mes messages d'erreur personnalisés, j'ai désactiver l'affichage des messages d'erreur natifs du navigateur liés à la validation HTML5 des champs du formulaire en ajoutant l'attribut 
+« novalidate » à la balise Form
+![image](https://github.com/LEBDIOUA/GameOn/assets/141866412/1b898e2a-c902-4c1f-9a39-ee9aad54bf9c)
 
-**5. Algorithme d'initialiser le formulaire (1)**<br/>
-![AlgorithmeInitialiserFormulaire1](./assets/algorithmeInitialiserFormulaire1.png)
 
-**6. Algorithme d'initialiser le formulaire (2)**<br/>
-![AlgorithmeInitialiserFormulaire2](./assets/algorithmeInitialiserFormulaire2.png)
+**5. Algorithme d'initialiser le formulaire**<br/>
+![AlgorithmeInitialiserFormulaire1](./assets/algorithmeInitialiserFormulaire.png)
+
+**6. Algorithme d'initialiser le modal**<br/>
+![AlgorithmeInitialiserModal](./assets/algorithmeInitialiserModal.png)
 
 **7. Validation des informations**<br/>
 Dans mon code, j'ai développé des fonctions de vérification pour chaque type d'élément input.<br/>
