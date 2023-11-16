@@ -25,7 +25,7 @@ Pour pouvoir afficher mes messages d'erreur personnalisés, j'ai désactiver l'a
 **5. Algorithme d'initialiser le formulaire**<br/>
 ![AlgorithmeInitialiserFormulaire1](./assets/algorithmeInitialiserFormulaire.png)
 
-**6. Algorithme d'initialiser le modal**<br/>
+**6. Algorithme d'initialiser et préparer le modal**<br/>
 ![AlgorithmeInitialiserModal](./assets/algorithmeInitialiserModal.png)
 
 **7. Validation des informations**<br/>
